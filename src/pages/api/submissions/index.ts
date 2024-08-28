@@ -25,20 +25,18 @@ export default async function handle(
 // Required fields in body: questionId, answer, email
 export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
     const { questionId, answer, email } = req.body
-    // const result = await prisma.submission.create({
-    //     data: {
-    //         questionId: questionId,
-    //         answer: answer,
-    //         email: email,
-    //     },
-    // })
-    // return res.status(201).json(result)
-    return res.status(201).json({questionId, answer, email})
+    const result = await prisma.submission.create({
+        data: {
+            questionId: questionId,
+            answer: answer,
+            email: email,
+        },
+    })
+    return res.status(201).json(result)
 }
 
 // GET /api/submissions
 export async function handleGET(req: NextApiRequest, res: NextApiResponse) {
-    // const submissions = await prisma.submission.findMany()
-    // return res.json(submissions)
-    return res.json({message: 'GET submissions'})
+    const submissions = await prisma.submission.findMany()
+    return res.json(submissions)
 }
