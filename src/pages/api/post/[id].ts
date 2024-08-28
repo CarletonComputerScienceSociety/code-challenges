@@ -8,6 +8,8 @@ export default async function handle(
   const postId = req.query.id
 
   switch (req.method) {
+    case 'GET':
+      return handleGET(postId, res)
     case 'DELETE':
       return handleDELETE(postId, res)
 
@@ -16,6 +18,13 @@ export default async function handle(
         `The HTTP ${req.method} method is not supported at this route.`,
       )
   }
+}
+
+async function handleGET(postId: unknown, res: NextApiResponse<any>) {
+  const post = await prisma.post.findUnique({
+    where: { id: Number(postId) },
+  })
+  return res.json(post)
 }
 
 // DELETE /api/post/:id
