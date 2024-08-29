@@ -86,7 +86,7 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
 
   if (existingSubmission) {
     sendAlert({
-      type: DiscordMessageType.ERROR,
+      type: DiscordMessageType.INFO,
       data: {
         message: `Failed Submission: Duplicate Correct submission`,
         submission: { questionId, answer, email },

@@ -16,7 +16,12 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+
     try {
+      if (!email.endsWith("@cmail.carleton.ca")) {
+        throw new Error("Please use a cmail.carleton.ca email address.");
+      }
+
       const body = {
         questionId: question.id,
         answer,
@@ -59,13 +64,13 @@ export default function Page({ params }: { params: { id: string } }) {
         <input
           autoFocus
           onChange={(e) => setAnswer(e.target.value)}
-          placeholder="Answer"
+          placeholder="answer"
           type="text"
           value={answer}
         />
         <input
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="@cmail.carleton.ca"
           type="text"
           value={email}
         />
