@@ -1,10 +1,10 @@
-import Header from '../components/Header'
-import '../styles/global.css'
+import Header from "../components/Header";
+import "../styles/global.css";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -13,5 +13,5 @@ export default function RootLayout({
         <div style={{ padding: "0 2rem" }}>{children}</div>
       </body>
     </html>
-  )
+  );
 }
