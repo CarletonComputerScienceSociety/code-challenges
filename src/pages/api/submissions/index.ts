@@ -75,24 +75,37 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
     return res.status(400).json({ error: "Incorrect answer" });
   }
 
-  // Check if submission already exists
-  const existingSubmission = await prisma.submission.findFirst({
-    where: {
-      questionId: questionId,
-      answer: answer,
-      email: email,
-    },
-  });
+  try {
+    // Check if submission already exists
+    console.log(prisma.submission);
+    const existingSubmission = await prisma.submission.findFirst({
+      where: {
+        questionId: questionId,
+        answer: answer,
+        email: email,
+      },
+    });
 
-  if (existingSubmission) {
+    if (existingSubmission) {
+      sendAlert({
+        type: DiscordMessageType.INFO,
+        data: {
+          message: `Failed Submission: Duplicate Correct submission`,
+          submission: { questionId, answer, email },
+        },
+      });
+      return res.status(400).json({ error: "Duplicate Correct submission" });
+    }
+  } catch (error) {
     sendAlert({
-      type: DiscordMessageType.INFO,
+      type: DiscordMessageType.ERROR,
       data: {
-        message: `Failed Submission: Duplicate Correct submission`,
+        error: "Failed Submission, Internal Server Error",
         submission: { questionId, answer, email },
       },
     });
-    return res.status(400).json({ error: "Duplicate Correct submission" });
+
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 
   try {
