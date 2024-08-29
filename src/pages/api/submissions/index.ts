@@ -97,6 +97,7 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
       return res.status(400).json({ error: "Duplicate Correct submission" });
     }
   } catch (error) {
+    console.log(error);
     sendAlert({
       type: DiscordMessageType.ERROR,
       data: {
