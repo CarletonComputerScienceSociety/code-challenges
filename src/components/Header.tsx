@@ -5,13 +5,19 @@ import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 
 export default function Header() {
-  const routePathName = usePathname();
-  const isActive: (pathname: string) => boolean = (pathname) =>
-    routePathName === pathname;
+  // const routePathName = usePathname();
+  // const isActive: (pathname: string) => boolean = (pathname) =>
+  //   routePathName === pathname;
 
   return (
     <nav>
-      <div className={styles.left}>
+      <Link href="/">
+        <img
+          src="https://ccss.carleton.ca/images/ccss-logo-2022.png"
+          alt="Vercel Logo"
+        />
+      </Link>
+      {/* <div className={styles.left}>
         <Link href="/" legacyBehavior>
           <a className={styles.bold} data-active={isActive("/")}>
             Blog
@@ -28,7 +34,7 @@ export default function Header() {
         <Link href="/create" legacyBehavior>
           <a data-active={isActive("/create")}>+ Create draft</a>
         </Link>
-      </div>
+      </div> */}
     </nav>
   );
 }

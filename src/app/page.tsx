@@ -1,18 +1,29 @@
-import prisma from "../lib/prisma";
-import Post from "../components/Post";
+import Card from "../components/Card/Card";
+import { questions } from "../data";
+import { Question } from "../data";
 
 export default async function Home() {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-    include: { author: true },
-  });
+  const today = new Date();
+  const availableQuestions = questions.filter(
+    (question: Question) =>
+      question.startDate <= today && question.endDate >= today,
+  );
   return (
     <>
-      {feed.map((post) => (
-        <div key={post.id}>
-          <Post post={post} />
+      <h1>Available Questions</h1>
+      {availableQuestions.map((question: Question) => (
+        <div key={question.id}>
+          <Card
+            title={question.title}
+            content={question.content}
+            link={`/questions/${question.id}`}
+          />
         </div>
       ))}
+
+      {availableQuestions.length === 0 && (
+        <div>No available questions at the moment.</div>
+      )}
     </>
   );
 }
