@@ -9,8 +9,8 @@ export default async function handle(
   res: NextApiResponse,
 ) {
   switch (req.method) {
-    // case "GET":
-    //   return handleGET(req, res);
+    case "GET":
+      return handleGET(req, res);
     case "POST":
       return handlePOST(req, res);
 
@@ -137,8 +137,8 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-// // GET /api/submissions
-// export async function handleGET(req: NextApiRequest, res: NextApiResponse) {
-//   const submissions = await prisma.submission.findMany();
-//   return res.json(submissions);
-// }
+// GET /api/submissions
+export async function handleGET(req: NextApiRequest, res: NextApiResponse) {
+  const submissions = await prisma.submission.findMany();
+  return res.json(submissions);
+}
