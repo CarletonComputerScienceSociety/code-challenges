@@ -140,5 +140,5 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
 // GET /api/submissions
 export async function handleGET(req: NextApiRequest, res: NextApiResponse) {
   const submissions = await prisma.submission.findMany();
-  return res.json(submissions);
+  return res.json(["test"]);
 }
