@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest",
     "check": "prettier --check '**/*.{css,scss,html,ts,tsx}'",
     "format": "prettier --write '**/*.{css,scss,html,ts,tsx}'"
   },
@@ -22,13 +23,18 @@
     "supports-color": "9.4.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.1",
     "@types/node": "20.16.2",
     "@types/react": "18.3.4",
     "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "jsdom": "^25.0.0",
     "prettier": "^3.3.3",
     "prisma": "5.18.0",
     "ts-node": "10.9.2",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "vitest": "^2.0.5"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
