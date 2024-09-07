@@ -1,9 +1,15 @@
 import { Question } from "./types";
 
+const question1Body = `
+<h3 style="color: red">Valid HTML</h3>
+<p>Please answer this very difficult question.</p>
+<p>Example submission: <code>2</code></p>
+`;
+
 const question1: Question = {
   id: "week-of-awesome-2024-1",
   title: "What is 1+1?",
-  content: "Please answer this very difficult question.",
+  content: question1Body,
   evaluate: (input: string): boolean => {
     // Add your evaluation logic here
     return true;

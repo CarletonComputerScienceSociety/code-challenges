@@ -1,15 +1,29 @@
 "use client";
 import React, { useState } from "react";
-import { notFound } from "next/navigation";
 import { questions } from "../../../data";
 import { default as Layout } from "../../../components/Page/Page";
+import Question from "../../../components/Question/Question";
+
+const notFound = () => {
+  return (
+    <Layout>
+      <div style={{ textAlign: "center", marginTop: "5rem" }}>
+        <h2>404: Question not found.</h2>
+      </div>
+    </Layout>
+  );
+};
 
 export default function Page({ params }: { params: { id: string } }) {
   const question = questions.find((question) => question.id === params.id);
 
   if (!question) return notFound();
 
+  const today = new Date();
+  if (question.startDate > today || question.endDate < today) return notFound();
+
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
   const [answer, setAnswer] = useState("");
   const [email, setEmail] = useState("");
 
@@ -19,10 +33,6 @@ export default function Page({ params }: { params: { id: string } }) {
     e.preventDefault();
 
     try {
-      if (!email.endsWith("@cmail.carleton.ca")) {
-        throw new Error("Please use a cmail.carleton.ca email address.");
-      }
-
       const body = {
         questionId: question.id,
         answer,
@@ -42,44 +52,67 @@ export default function Page({ params }: { params: { id: string } }) {
         throw new Error(data.error);
       }
 
-      setMessage("You got the correct answer 🎉");
+      setError(false);
+      setMessage("🎉 You got the correct answer");
     } catch (error) {
-      // @ts-ignore
-      setMessage(error.toString() || MESSAGE_500 || "");
+      setError(true);
+      setMessage(
+        // @ts-ignore
+        "🚨" + (error.toString() || MESSAGE_500 || ""),
+      );
     }
   };
 
   const clearInputs = () => {
+    setError(false);
     setAnswer("");
     setEmail("");
   };
 
   return (
     <Layout>
-      <>
-        <div style={{ marginTop: "5rem" }}></div>
-        {message && <p>{message}</p>}
-        <div>
-          <h1>{question.title}</h1>
-          <p>{question.content}</p>
+      <Question>
+        <div className="Question__banner">
+          {message && (
+            <div
+              className={`Question__message ${
+                error
+                  ? "Question__message--error"
+                  : "Question__message--success"
+              }`}
+            >
+              {<p>{message}</p>}
+            </div>
+          )}
         </div>
-        <form onSubmit={submitData}>
+        <div className="Question__title">
+          <h1>{question.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: question.content }}></div>
+        </div>
+        <div style={{ marginTop: "2rem" }}></div>
+        <form onSubmit={submitData} className="Question__form">
           <input
+            className="Question__form__email"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="@cmail.carleton.ca"
             type="text"
             value={email}
           />
           <textarea
-            className=""
+            className="Question__form__answer"
             autoFocus
             onChange={(e) => setAnswer(e.target.value)}
-            placeholder="answer"
+            placeholder="Please enter your answer here."
             value={answer}
           />
-          <input disabled={!answer || !email} type="submit" value="Submit" />
+          <input
+            className="Question__form__button"
+            disabled={!answer || !email}
+            type="submit"
+            value="Submit"
+          />
         </form>
-      </>
+      </Question>
     </Layout>
   );
 }

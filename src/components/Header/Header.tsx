@@ -13,7 +13,7 @@ export default function Header() {
             alt="Vercel Logo"
           />
         </Link>
-        <h3>
+        <h3 className="Header__text">
           <i>Daily Code Challenge</i>
         </h3>
       </div>

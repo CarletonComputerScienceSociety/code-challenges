@@ -1,7 +1,8 @@
 .Page {
-  // padding-left: calc(5% + 0.625rem);
-  // padding-right: calc(5% + 0.625rem);
+  padding-left: calc(2rem);
+  padding-right: calc(2rem);
   max-width: 62.5rem;
+  width: 100%;
   margin: auto;
   min-height: calc(100vh - 4.45rem * 2);
 }

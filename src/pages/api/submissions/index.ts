@@ -92,7 +92,9 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
           submission: { questionId, answer, email },
         },
       });
-      return res.status(400).json({ error: "Duplicate Correct submission" });
+      return res.status(400).json({
+        error: "You've already submitted a correct answer to this question",
+      });
     }
   } catch (error) {
     console.log(error);
