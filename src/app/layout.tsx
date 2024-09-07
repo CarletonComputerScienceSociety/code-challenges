@@ -3,11 +3,24 @@ import Header from "../components/Header/Header";
 import Layout from "../components/Layout/Layout";
 import "../styles/global.css";
 
+const Telemetry = () => (
+  <div>
+    <noscript>
+      <img src="https://shynet-mpb4.onrender.com/ingress/9b83ab99-be9b-4290-adf0-ed82145dad7c/pixel.gif" />
+    </noscript>
+    <script
+      defer
+      src="https://shynet-mpb4.onrender.com/ingress/9b83ab99-be9b-4290-adf0-ed82145dad7c/script.js"
+    ></script>
+  </div>
+);
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const prod = process.env.ENVIRONMENT === "production";
   return (
     <html lang="en">
       <head>
@@ -20,6 +33,7 @@ export default function RootLayout({
         <link href="https://ccss.carleton.ca/favicon.ico" rel="icon" />
       </head>
       <body>
+        {prod && <Telemetry />}
         <Header />
         <Layout>{children}</Layout>
         <Footer />
