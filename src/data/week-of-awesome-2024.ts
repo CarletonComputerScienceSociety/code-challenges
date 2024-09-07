@@ -12,7 +12,7 @@ const question1: Question = {
   content: question1Body,
   evaluate: (input: string): boolean => {
     // Add your evaluation logic here
-    return true;
+    return input === "2";
   },
   startDate: new Date("2024-09-07"),
   endDate: new Date("2024-09-15"),
