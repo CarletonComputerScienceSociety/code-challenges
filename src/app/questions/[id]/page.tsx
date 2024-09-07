@@ -58,7 +58,7 @@ export default function Page({ params }: { params: { id: string } }) {
       setError(true);
       setMessage(
         // @ts-ignore
-        "🚨" + (error.toString() || MESSAGE_500 || ""),
+        "🚨 " + (error.toString() || MESSAGE_500 || ""),
       );
     }
   };

@@ -79,7 +79,6 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
     const existingSubmission = await prisma.submission.findFirst({
       where: {
         questionId: questionId,
-        answer: answer,
         email: email,
       },
     });
