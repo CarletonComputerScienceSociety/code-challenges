@@ -9,8 +9,6 @@ export default async function handle(
   res: NextApiResponse,
 ) {
   switch (req.method) {
-    case "GET":
-      return handleGET(req, res);
     case "POST":
       return handlePOST(req, res);
 
@@ -78,7 +76,6 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     // Check if submission already exists
-    console.log(prisma.submission);
     const existingSubmission = await prisma.submission.findFirst({
       where: {
         questionId: questionId,
@@ -136,10 +133,4 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
     });
     return res.status(500).json({ error: "Internal Server Error" });
   }
-}
-
-// GET /api/submissions
-export async function handleGET(req: NextApiRequest, res: NextApiResponse) {
-  const submissions = await prisma.submission.findMany();
-  return res.json(["test"]);
 }
