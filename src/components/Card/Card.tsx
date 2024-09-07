@@ -1,20 +1,31 @@
 import React from "react";
 import Link from "next/link";
 import "./Card.style.scss";
+import { Question } from "../../data";
 
 interface CardProps {
   link: string;
-  title: string;
-  content: string;
+  question: Question;
+  number: number;
 }
 
-export default function Card({ link, title, content }: CardProps) {
+export default function Card({ link, question, number }: CardProps) {
+  const today = new Date();
+  const isAvailable = question.startDate <= today && question.endDate >= today;
   return (
-    <div className="Card">
-      <Link href={link}>
-        <div>
-          <h2>{title}</h2>
-          <p>{content}</p>
+    <div className="Card__outer">
+      <Link
+        href={link}
+        aria-disabled={!isAvailable}
+        className={`Card__link ${isAvailable ? "Card__link--available" : "Card__link--disabled"}`}
+      >
+        <div
+          className={`Card ${isAvailable ? "Card--available" : "Card--disabled"}`}
+        >
+          <div>
+            {number}
+            {isAvailable}
+          </div>
         </div>
       </Link>
     </div>

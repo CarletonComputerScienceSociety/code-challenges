@@ -1,4 +1,5 @@
 import Card from "../components/Card/Card";
+import Page from "../components/Page/Page";
 import { questions } from "../data";
 import { Question } from "../data";
 
@@ -9,21 +10,19 @@ export default async function Home() {
       question.startDate <= today && question.endDate >= today,
   );
   return (
-    <>
-      <h1>Available Questions</h1>
-      {availableQuestions.map((question: Question) => (
-        <div key={question.id}>
-          <Card
-            title={question.title}
-            content={question.content}
-            link={`/questions/${question.id}`}
-          />
-        </div>
-      ))}
-
-      {availableQuestions.length === 0 && (
-        <div>No available questions at the moment.</div>
-      )}
-    </>
+    <Page>
+      <div style={{ marginTop: "5rem" }}></div>
+      <div className="Card__list">
+        {questions.map((question: Question, index: number) => (
+          <div key={question.id}>
+            <Card
+              number={index + 1}
+              question={question}
+              link={`/questions/${question.id}`}
+            />
+          </div>
+        ))}
+      </div>
+    </Page>
   );
 }

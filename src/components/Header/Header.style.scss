@@ -1,5 +1,30 @@
 .Header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow:
+    0 0px 4px 0 rgba(0, 0, 0, 0.025),
+    0 6px 20px 0 rgba(0, 0, 0, 0.04);
+  background-color: white;
+  height: 4.45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  // margin:auto;
+  padding-left: calc(5% + 0.625rem);
+  padding-right: calc(5% + 0.625rem);
+
   img {
     width: 225px;
+  }
+
+  &__container {
+    width: 100%;
+    // max-width: 62.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
   }
 }

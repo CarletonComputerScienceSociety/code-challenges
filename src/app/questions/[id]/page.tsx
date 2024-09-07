@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { notFound } from "next/navigation";
 import { questions } from "../../../data";
+import { default as Layout } from "../../../components/Page/Page";
 
 export default function Page({ params }: { params: { id: string } }) {
   const question = questions.find((question) => question.id === params.id);
@@ -54,28 +55,31 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   return (
-    <>
-      {message && <p>{message}</p>}
-      <div>
-        <h1>{question.title}</h1>
-        <p>{question.content}</p>
-      </div>
-      <form onSubmit={submitData}>
-        <input
-          autoFocus
-          onChange={(e) => setAnswer(e.target.value)}
-          placeholder="answer"
-          type="text"
-          value={answer}
-        />
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="@cmail.carleton.ca"
-          type="text"
-          value={email}
-        />
-        <input disabled={!answer || !email} type="submit" value="Submit" />
-      </form>
-    </>
+    <Layout>
+      <>
+        <div style={{ marginTop: "5rem" }}></div>
+        {message && <p>{message}</p>}
+        <div>
+          <h1>{question.title}</h1>
+          <p>{question.content}</p>
+        </div>
+        <form onSubmit={submitData}>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="@cmail.carleton.ca"
+            type="text"
+            value={email}
+          />
+          <textarea
+            className=""
+            autoFocus
+            onChange={(e) => setAnswer(e.target.value)}
+            placeholder="answer"
+            value={answer}
+          />
+          <input disabled={!answer || !email} type="submit" value="Submit" />
+        </form>
+      </>
+    </Layout>
   );
 }

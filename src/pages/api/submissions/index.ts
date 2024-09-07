@@ -64,7 +64,8 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
   }
 
   // Check if answer is correct
-  if (answer !== question.answer) {
+  const result = question.evaluate(answer);
+  if (result !== true) {
     sendAlert({
       type: DiscordMessageType.INFO,
       data: {
@@ -101,7 +102,7 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
     sendAlert({
       type: DiscordMessageType.ERROR,
       data: {
-        error: "Failed Submission, Internal Server Error",
+        message: "Failed Submission, Internal Server Error",
         submission: { questionId, answer, email },
       },
     });
@@ -129,7 +130,7 @@ export async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
     sendAlert({
       type: DiscordMessageType.ERROR,
       data: {
-        error: "Failed Submission, Internal Server Error",
+        message: "Failed Submission, Internal Server Error",
         submission: { questionId, answer, email },
       },
     });

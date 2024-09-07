@@ -1,0 +1,54 @@
+.Card {
+  width: 10.5rem;
+  height: 10.5rem;
+  border: 0.063rem * 2 solid #a1a1a1 !important;
+  font-size: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.625rem;
+
+  &__outer {
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.3;
+
+    a {
+      pointer-events: none;
+    }
+  }
+
+  &--available {
+    &:hover {
+      border: 0.063rem * 2 solid #c40729 !important;
+      color: white;
+      background-color: #c40729;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+  }
+
+  &__link--disabled {
+    pointer-events: none;
+  }
+
+  //   &__header {
+  //     font-size: 1.5rem;
+  //     font-weight: 600;
+  //     margin-bottom: 1rem;
+  //     display:flex;
+  //     justify-content: center;
+  //   }
+}
