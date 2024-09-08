@@ -7,7 +7,14 @@ const question1Body = `
 <p>Example submission: <code>[1, 2, 3, 4, 5, 6, 7]</code></p>
 `;
 
-const question1Answer = [58, 19, 35, 6, 31, 80, 44, 83, 92, 8, 56, 37, 88, 87, 14, 32, 89, 21, 4, 91, 33, 90, 17, 84, 42, 97, 38, 94, 28, 64, 66, 48, 95, 51, 60, 30, 74, 15, 96, 82, 100, 75, 10, 26, 22, 49, 81, 11, 76, 20, 98, 69, 7, 68, 46, 86, 78, 47, 73, 13, 9, 36, 40, 99, 55, 77, 23, 1, 24, 2, 53, 71, 62, 52, 3, 50, 79, 65, 57, 70, 27, 29, 16, 34, 43, 59, 61, 45, 5, 85, 25, 12, 93, 54, 67, 63, 18, 41, 39, 72]
+const question1Answer = [
+  58, 19, 35, 6, 31, 80, 44, 83, 92, 8, 56, 37, 88, 87, 14, 32, 89, 21, 4, 91,
+  33, 90, 17, 84, 42, 97, 38, 94, 28, 64, 66, 48, 95, 51, 60, 30, 74, 15, 96,
+  82, 100, 75, 10, 26, 22, 49, 81, 11, 76, 20, 98, 69, 7, 68, 46, 86, 78, 47,
+  73, 13, 9, 36, 40, 99, 55, 77, 23, 1, 24, 2, 53, 71, 62, 52, 3, 50, 79, 65,
+  57, 70, 27, 29, 16, 34, 43, 59, 61, 45, 5, 85, 25, 12, 93, 54, 67, 63, 18, 41,
+  39, 72,
+];
 
 const question1: Question = {
   id: "week-of-awesome-2024-1",
@@ -17,14 +24,19 @@ const question1: Question = {
     try {
       const parsedInput = JSON.parse(input);
 
-      if (!Array.isArray(parsedInput) || !parsedInput.every(item => Number.isInteger(item))) {
+      if (
+        !Array.isArray(parsedInput) ||
+        !parsedInput.every((item) => Number.isInteger(item))
+      ) {
         return false;
       }
 
       const sortedParsedInput = [...parsedInput].sort();
       const sortedQuestion1Answer = [...question1Answer].sort();
 
-      return sortedParsedInput.every((value, index) => value === sortedQuestion1Answer[index]);
+      return sortedParsedInput.every(
+        (value, index) => value === sortedQuestion1Answer[index],
+      );
     } catch (e) {
       return false;
     }
