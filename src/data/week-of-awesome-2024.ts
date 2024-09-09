@@ -17,7 +17,7 @@ const question1Answer = [
 ];
 
 const question2Body = `
-<p><b>Given the following list of integers, arrange them into the smallest number possible!</b></p>
+<p><b>Given the following list of integers, arrange them into the smallest number possible after concatenation!</b></p>
 <i>Challenge: Implement your own sorting and/or comparison algorithm!</i>
 <p><code>[31, 18, 85, 59, 38, 16, 18, 11, 21, 3, 10, 77, 100, 27, 57, 21, 58, 87, 67, 66, 44, 60, 57, 6, 91, 79, 59, 33, 6, 75, 73, 52, 90, 34, 95, 5, 79, 66, 22, 4, 94, 1, 91, 83, 5, 55, 94, 9, 16, 57, 17, 69, 87, 80, 91, 23, 16, 71, 47, 41, 71, 34, 52, 57, 100, 9, 86, 46, 77, 63, 13, 85, 8, 83, 92, 79, 53, 98, 59, 42, 6, 86, 76, 41, 33, 29, 100, 17, 90, 11, 29, 62, 40, 54, 69, 73, 18, 4, 91, 95]</code></p>
 <p>Example submission: <code>123456789</code></p>
