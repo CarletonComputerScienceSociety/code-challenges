@@ -41,4 +41,23 @@ describe("Week of Awesome 2024 Questions", () => {
       expect(question.evaluate(invalidFormatAnswer2)).toBe(false);
     });
   });
+
+  describe("week-of-awesome-2024-2", () => {
+    const question = questions.find(
+      (question) => question.id === "week-of-awesome-2024-2",
+    ) as Question;
+
+    const answer =
+      "10010010010111111316161617171818182121222327292931333333434384041414244444647525253545555575757575859595960626366666666769697171737375767777797979808383858586868787890909191919192949495959899";
+
+    const wrongAnswer = "1";
+
+    it("will be successful given the right answer", () => {
+      expect(question.evaluate(answer)).toBe(true);
+    });
+
+    it("will fail given the wrong answer", () => {
+      expect(question.evaluate(wrongAnswer)).toBe(false);
+    });
+  });
 });

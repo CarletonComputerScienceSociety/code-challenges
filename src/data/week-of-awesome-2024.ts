@@ -16,6 +16,15 @@ const question1Answer = [
   39, 72,
 ];
 
+const question2Body = `
+<p><b>Given the following list of integers, arrange them into the smallest number possible!</b></p>
+<i>Challenge: Implement your own sorting and/or comparison algorithm!</i>
+<p><code>[31, 18, 85, 59, 38, 16, 18, 11, 21, 3, 10, 77, 100, 27, 57, 21, 58, 87, 67, 66, 44, 60, 57, 6, 91, 79, 59, 33, 6, 75, 73, 52, 90, 34, 95, 5, 79, 66, 22, 4, 94, 1, 91, 83, 5, 55, 94, 9, 16, 57, 17, 69, 87, 80, 91, 23, 16, 71, 47, 41, 71, 34, 52, 57, 100, 9, 86, 46, 77, 63, 13, 85, 8, 83, 92, 79, 53, 98, 59, 42, 6, 86, 76, 41, 33, 29, 100, 17, 90, 11, 29, 62, 40, 54, 69, 73, 18, 4, 91, 95]</code></p>
+<p>Example submission: <code>123456789</code></p>
+`;
+
+const question2Answer = "10010010010111111316161617171818182121222327292931333333434384041414244444647525253545555575757575859595960626366666666769697171737375767777797979808383858586868787890909191919192949495959899";
+
 const question1: Question = {
   id: "week-of-awesome-2024-1",
   title: "Array De-duplication",
@@ -47,11 +56,10 @@ const question1: Question = {
 
 const question2: Question = {
   id: "week-of-awesome-2024-2",
-  title: "What is 1+2?",
-  content: "Please answer this very difficult question.",
+  title: "Smallest Number",
+  content: question2Body,
   evaluate: (input: string): boolean => {
-    // Add your evaluation logic here
-    return true;
+    return input === question2Answer;
   },
   startDate: new Date("2024-09-09"),
   endDate: new Date("2024-09-15"),
