@@ -17,7 +17,7 @@ const question2Body = `
 const question3Body = `
 <p><b>You may have heard of the often-used valid parentheses question (if you haven't, search it up) - How about generating them? Please provide all combinations of 5 pairs of parentheses!</b></p>
 <i>Challenge: Use recursion and backtracking!</i>
-<p>Example submission: <code>["()", "(())"]</code></p>
+<p>Example submission: <code>["((()))(())", "((()))()()"]</code></p>
 `;
 
 const question4Body = `
