@@ -7,6 +7,30 @@ const question1Body = `
 <p>Example submission: <code>[1, 2, 3, 4, 5, 6, 7]</code></p>
 `;
 
+const question2Body = `
+<p><b>Given the following list of integers, arrange them into the smallest number possible after concatenation!</b></p>
+<i>Challenge: Implement your own sorting and/or comparison algorithm!</i>
+<p><code>[31, 18, 85, 59, 38, 16, 18, 11, 21, 3, 10, 77, 100, 27, 57, 21, 58, 87, 67, 66, 44, 60, 57, 6, 91, 79, 59, 33, 6, 75, 73, 52, 90, 34, 95, 5, 79, 66, 22, 4, 94, 1, 91, 83, 5, 55, 94, 9, 16, 57, 17, 69, 87, 80, 91, 23, 16, 71, 47, 41, 71, 34, 52, 57, 100, 9, 86, 46, 77, 63, 13, 85, 8, 83, 92, 79, 53, 98, 59, 42, 6, 86, 76, 41, 33, 29, 100, 17, 90, 11, 29, 62, 40, 54, 69, 73, 18, 4, 91, 95]</code></p>
+<p>Example submission: <code>123456789</code></p>
+`;
+
+const question3Body = `
+<p><b>You may have heard of the often-used valid parentheses question (if you haven't, search it up) - How about generating them? Please provide all combinations of 5 pairs of parentheses!</b></p>
+<i>Challenge: Use recursion and backtracking!</i>
+<p>Example submission: <code>["()", "(())"]</code></p>
+`;
+
+const question4Body = `
+<p><b>In the range of 0-1000 (inclusive), how many times does the digit 2 appear?</b></p>
+<i>Challenge: Use dynamic programming!</i>
+<p>Example submission: <code>1234</code></p>
+`;
+
+const question5Body = `
+<p><b>Ryan is trying to get home! If Ryan is in the bottom left cell of a 28x5 grid, and trying to get to the top right cell, what is the total number of possible unique paths that can be taken? Ryan can only move up or right, but not diagonally.</b></p>
+<p>Example submission: <code>1234</code></p>
+`;
+
 const question1Answer = [
   58, 19, 35, 6, 31, 80, 44, 83, 92, 8, 56, 37, 88, 87, 14, 32, 89, 21, 4, 91,
   33, 90, 17, 84, 42, 97, 38, 94, 28, 64, 66, 48, 95, 51, 60, 30, 74, 15, 96,
@@ -15,40 +39,36 @@ const question1Answer = [
   57, 70, 27, 29, 16, 34, 43, 59, 61, 45, 5, 85, 25, 12, 93, 54, 67, 63, 18, 41,
   39, 72,
 ];
-
-const question2Body = `
-<p><b>Given the following list of integers, arrange them into the smallest number possible after concatenation!</b></p>
-<i>Challenge: Implement your own sorting and/or comparison algorithm!</i>
-<p><code>[31, 18, 85, 59, 38, 16, 18, 11, 21, 3, 10, 77, 100, 27, 57, 21, 58, 87, 67, 66, 44, 60, 57, 6, 91, 79, 59, 33, 6, 75, 73, 52, 90, 34, 95, 5, 79, 66, 22, 4, 94, 1, 91, 83, 5, 55, 94, 9, 16, 57, 17, 69, 87, 80, 91, 23, 16, 71, 47, 41, 71, 34, 52, 57, 100, 9, 86, 46, 77, 63, 13, 85, 8, 83, 92, 79, 53, 98, 59, 42, 6, 86, 76, 41, 33, 29, 100, 17, 90, 11, 29, 62, 40, 54, 69, 73, 18, 4, 91, 95]</code></p>
-<p>Example submission: <code>123456789</code></p>
-`;
-
 const question2Answer = "10010010010111111316161617171818182121222327292931333333434384041414244444647525253545555575757575859595960626366666666769697171737375767777797979808383858586868787890909191919192949495959899";
+const question3Answer = ["((((()))))", "(((()())))", "(((())()))", "(((()))())", "(((())))()", "((()(())))", "((()()()))", "((()())())", "((()()))()", "((())(()))", "((())()())", "((())())()", "((()))(())", "((()))()()", "(()((())))", "(()(()()))", "(()(())())", "(()(()))()", "(()()(()))", "(()()()())", "(()()())()", "(()())(())", "(()())()()", "(())((()))", "(())(()())", "(())(())()", "(())()(())", "(())()()()", "()(((())))", "()((()()))", "()((())())", "()((()))()", "()(()(()))", "()(()()())", "()(()())()", "()(())(())", "()(())()()", "()()((()))", "()()(()())", "()()(())()", "()()()(())", "()()()()()"];
+const question4Answer = "300";
+const question5Answer = "31465";
+
+const checkArrayEquivalency = <T>(input: string, answer: T[]): boolean => {
+  try {
+    const parsedInput = JSON.parse(input);
+
+    if (!Array.isArray(parsedInput) || parsedInput.length !== answer.length) {
+      return false;
+    }
+
+    const sortedParsedInput = [...parsedInput].sort();
+    const sortedAnswer = [...answer].sort();
+
+    return sortedParsedInput.every(
+      (value, index) => value === sortedAnswer[index],
+    );
+  } catch (e) {
+    return false;
+  }
+}
 
 const question1: Question = {
   id: "week-of-awesome-2024-1",
   title: "Array De-duplication",
   content: question1Body,
   evaluate: (input: string): boolean => {
-    try {
-      const parsedInput = JSON.parse(input);
-
-      if (
-        !Array.isArray(parsedInput) ||
-        !parsedInput.every((item) => Number.isInteger(item))
-      ) {
-        return false;
-      }
-
-      const sortedParsedInput = [...parsedInput].sort();
-      const sortedQuestion1Answer = [...question1Answer].sort();
-
-      return sortedParsedInput.every(
-        (value, index) => value === sortedQuestion1Answer[index],
-      );
-    } catch (e) {
-      return false;
-    }
+    return checkArrayEquivalency(input, question1Answer);
   },
   startDate: new Date("2024-09-07"),
   endDate: new Date("2024-09-15"),
@@ -67,11 +87,10 @@ const question2: Question = {
 
 const question3: Question = {
   id: "week-of-awesome-2024-3",
-  title: "What is 1+3?",
-  content: "Please answer this very difficult question.",
+  title: "Valid Parentheses?",
+  content: question3Body,
   evaluate: (input: string): boolean => {
-    // Add your evaluation logic here
-    return true;
+    return checkArrayEquivalency(input, question3Answer);
   },
   startDate: new Date("2024-09-10"),
   endDate: new Date("2024-09-15"),
@@ -79,11 +98,10 @@ const question3: Question = {
 
 const question4: Question = {
   id: "week-of-awesome-2024-4",
-  title: "What is 1+4?",
-  content: "Please answer this very difficult question.",
+  title: "Pair Programming",
+  content: question4Body,
   evaluate: (input: string): boolean => {
-    // Add your evaluation logic here
-    return true;
+    return input === question4Answer;
   },
   startDate: new Date("2024-09-11"),
   endDate: new Date("2024-09-15"),
@@ -91,11 +109,10 @@ const question4: Question = {
 
 const question5: Question = {
   id: "week-of-awesome-2024-5",
-  title: "What is 1+1?",
-  content: "Please answer this very difficult question.",
+  title: "Finding His Way Home",
+  content: question5Body,
   evaluate: (input: string): boolean => {
-    // Add your evaluation logic here
-    return true;
+    return input === question5Answer;
   },
   startDate: new Date("2024-09-12"),
   endDate: new Date("2024-09-15"),
