@@ -158,7 +158,7 @@ const question5: Question = {
   evaluate: (input: string): boolean => {
     return input === question5Answer;
   },
-  startDate: new Date("2024-09-12"),
+  startDate: new Date("2024-09-10"),
   endDate: new Date("2024-09-15"),
 };
 
