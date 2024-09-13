@@ -31,6 +31,23 @@ const question5Body = `
 <p>Example submission: <code>1234</code></p>
 `;
 
+const question6Body = `
+<p><b>Veronica is trying to get to Bayshore to get some Greek food! If Veronica is in the top left cell, and wants to get to the bottom right cell. However, Veronica faces some issues! There are many roads and obstacles in her path.</b></p>
+<p>What is the total number of possible unique paths that can be taken? Veronica can only move down or right, but not diagonally.</p>
+<code>[
+  [0, 0, 1, 0, 1, 1, 0, 1, 0, 0],
+  [1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+  [0, 1, 0, 0, 1, 1, 1, 1, 1, 0],
+  [1, 0, 0, 0, 0, 1, 1, 1, 0, 1],
+  [1, 1, 1, 1, 0, 1, 1, 0, 0, 0],
+  [1, 1, 1, 1, 0, 0, 0, 1, 0, 1],
+  [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+  [1, 0, 1, 0, 0, 1, 0, 0, 0, 0]
+]</code>
+`;
+
 const question1Answer = [
   58, 19, 35, 6, 31, 80, 44, 83, 92, 8, 56, 37, 88, 87, 14, 32, 89, 21, 4, 91,
   33, 90, 17, 84, 42, 97, 38, 94, 28, 64, 66, 48, 95, 51, 60, 30, 74, 15, 96,
@@ -87,6 +104,7 @@ const question3Answer = [
 ];
 const question4Answer = "300";
 const question5Answer = "31465";
+const question6Answer = "36";
 
 const checkArrayEquivalency = <T>(input: string, answer: T[]): boolean => {
   try {
@@ -167,10 +185,9 @@ const question6: Question = {
   title: "What is 1+1?",
   content: "Please answer this very difficult question.",
   evaluate: (input: string): boolean => {
-    // Add your evaluation logic here
-    return true;
+    return input === question6Answer;
   },
-  startDate: new Date("2024-09-13"),
+  startDate: new Date("2024-09-10"),
   endDate: new Date("2024-09-15"),
 };
 
