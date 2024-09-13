@@ -34,18 +34,19 @@ const question5Body = `
 const question6Body = `
 <p><b>Veronica is trying to get to Bayshore to get some Greek food! If Veronica is in the top left cell, and wants to get to the bottom right cell. However, Veronica faces some issues! There are many roads and obstacles in her path.</b></p>
 <p>What is the total number of possible unique paths that can be taken? Veronica can only move down or right, but not diagonally.</p>
-<code>[
-  [0, 0, 1, 0, 1, 1, 0, 1, 0, 0],
-  [1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-  [0, 1, 0, 0, 1, 1, 1, 1, 1, 0],
-  [1, 0, 0, 0, 0, 1, 1, 1, 0, 1],
-  [1, 1, 1, 1, 0, 1, 1, 0, 0, 0],
-  [1, 1, 1, 1, 0, 0, 0, 1, 0, 1],
-  [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-  [1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
-  [1, 0, 1, 0, 0, 1, 0, 0, 0, 0]
+<code>[<br>
+  &nbsp; &nbsp;[0, 0, 1, 0, 1, 1, 0, 1, 0, 0],<br>
+  &nbsp; &nbsp;[1, 0, 1, 0, 1, 1, 1, 1, 1, 0],<br>
+  &nbsp; &nbsp;[0, 0, 0, 0, 0, 0, 0, 1, 1, 1],<br>
+  &nbsp; &nbsp;[0, 1, 0, 0, 1, 1, 1, 1, 1, 0],<br>
+  &nbsp; &nbsp;[1, 0, 0, 0, 0, 1, 1, 1, 0, 1],<br>
+  &nbsp; &nbsp;[1, 1, 1, 1, 0, 1, 1, 0, 0, 0],<br>
+  &nbsp; &nbsp;[1, 1, 1, 1, 0, 0, 0, 1, 0, 1],<br>
+  &nbsp; &nbsp;[1, 1, 1, 1, 1, 0, 0, 0, 0, 0],<br>
+  &nbsp; &nbsp;[1, 0, 0, 0, 1, 0, 1, 0, 0, 0],<br>
+  &nbsp; &nbsp;[1, 0, 1, 0, 0, 1, 0, 0, 0, 0]<br>
 ]</code>
+<p>Example submission: <code>1234</code></p>
 `;
 
 const question1Answer = [
@@ -182,8 +183,8 @@ const question5: Question = {
 
 const question6: Question = {
   id: "week-of-awesome-2024-6",
-  title: "What is 1+1?",
-  content: "Please answer this very difficult question.",
+  title: "Finding Her Way to Food",
+  content: question6Body,
   evaluate: (input: string): boolean => {
     return input === question6Answer;
   },
