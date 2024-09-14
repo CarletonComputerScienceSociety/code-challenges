@@ -50,7 +50,7 @@ const question6Body = `
 `;
 
 const question7Body = `
-  <p><b>Given the set created from the range 0-9 (inclusive), and all permutations are generated in order, what is the 202413th permutation sequence?</b></p>
+  <p><b>Given the set created from the range 1-9 (inclusive), and all permutations are generated in order, what is the 202413th permutation sequence?</b></p>
   <p>Example submission: <code>1234</code></p>
 `;
 
