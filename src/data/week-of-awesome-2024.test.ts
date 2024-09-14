@@ -131,4 +131,22 @@ describe("Week of Awesome 2024 Questions", () => {
       expect(question.evaluate(wrongAnswer)).toBe(false);
     });
   });
+
+  describe("week-of-awesome-2024-7", () => {
+    const question = questions.find(
+      (question) => question.id === "week-of-awesome-2024-7",
+    ) as Question;
+
+    const answer = "613289547";
+
+    const wrongAnswer = "0";
+
+    it("will be successful given the right answer", () => {
+      expect(question.evaluate(answer)).toBe(true);
+    });
+
+    it("will fail given the wrong answer", () => {
+      expect(question.evaluate(wrongAnswer)).toBe(false);
+    });
+  });
 });
