@@ -49,6 +49,11 @@ const question6Body = `
 <p>Example submission: <code>1234</code></p>
 `;
 
+const question7Body = `
+  <p><b>Given the set created from the range 0-9 (inclusive), and all permutations are generated in order, what is the 202413th permutation sequence?</b></p>
+  <p>Example submission: <code>1234</code></p>
+`;
+
 const question1Answer = [
   58, 19, 35, 6, 31, 80, 44, 83, 92, 8, 56, 37, 88, 87, 14, 32, 89, 21, 4, 91,
   33, 90, 17, 84, 42, 97, 38, 94, 28, 64, 66, 48, 95, 51, 60, 30, 74, 15, 96,
@@ -106,6 +111,7 @@ const question3Answer = [
 const question4Answer = "300";
 const question5Answer = "31465";
 const question6Answer = "36";
+const question7Answer = "613289547";
 
 const checkArrayEquivalency = <T>(input: string, answer: T[]): boolean => {
   try {
@@ -194,13 +200,12 @@ const question6: Question = {
 
 const question7: Question = {
   id: "week-of-awesome-2024-7",
-  title: "What is 1+1?",
-  content: "Please answer this very difficult question.",
+  title: "Permutations...",
+  content: question7Body,
   evaluate: (input: string): boolean => {
-    // Add your evaluation logic here
-    return true;
+    return input === question7Answer;
   },
-  startDate: new Date("2024-09-14"),
+  startDate: new Date("2024-09-10"),
   endDate: new Date("2024-09-15"),
 };
 
