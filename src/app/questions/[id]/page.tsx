@@ -14,6 +14,26 @@ const notFound = () => {
   );
 };
 
+const passwordInput = (
+  password: string,
+  setPassword: (password: string) => void,
+) => {
+  return (
+    <Layout>
+      <div style={{ textAlign: "center", marginTop: "5rem" }}>
+        <h4>Enter The Password</h4>
+        <input
+          className="Question__form__password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          type="password"
+          value={password}
+        />
+      </div>
+    </Layout>
+  );
+};
+
 export default function Page({ params }: { params: { id: string } }) {
   const question = questions.find((question) => question.id === params.id);
 
@@ -22,12 +42,20 @@ export default function Page({ params }: { params: { id: string } }) {
   const today = new Date();
   if (question.startDate > today || question.endDate < today) return notFound();
 
+  const [optionIndex, setOptionIndex] = useState(
+    question.options ? Math.floor(Math.random() * question.options.length) : 0,
+  );
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [answer, setAnswer] = useState("");
   const [email, setEmail] = useState("");
 
   const MESSAGE_500 = "Failed to submit your answer. Please try again.";
+
+  const [password, setPassword] = useState("");
+  if (question.password && password !== question.password) {
+    return passwordInput(password, setPassword);
+  }
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -37,6 +65,7 @@ export default function Page({ params }: { params: { id: string } }) {
         questionId: question.id,
         answer,
         email,
+        optionId: question.options ? question.options[optionIndex].id : null,
       };
 
       const response = await fetch(`/api/submissions`, {
@@ -70,7 +99,7 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   return (
-    <Layout>
+    <Layout styleOverride={question.style}>
       <Question>
         <div className="Question__banner">
           {message && (
@@ -87,7 +116,13 @@ export default function Page({ params }: { params: { id: string } }) {
         </div>
         <div className="Question__title">
           <h1>{question.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: question.content }}></div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: question.options
+                ? question.options[optionIndex].content
+                : question.content,
+            }}
+          ></div>
         </div>
         <div style={{ marginTop: "2rem" }}></div>
         <form onSubmit={submitData} className="Question__form">

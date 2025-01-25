@@ -3,8 +3,13 @@ import "./Page.style.scss";
 
 interface PageProps {
   children: React.ReactNode;
+  styleOverride?: string;
 }
 
-export default function Page({ children }: PageProps) {
-  return <div className="Page">{children}</div>;
+export default function Page({ children, styleOverride }: PageProps) {
+  return (
+    <div className={`${styleOverride ? styleOverride : ""}`}>
+      <div className="Page">{children}</div>
+    </div>
+  );
 }

@@ -16,4 +16,5 @@ body {
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   /* background: rgba(0, 0, 0, 0.05); */
   background-color: #faf9f8;
+  min-height: 100vh;
 }
