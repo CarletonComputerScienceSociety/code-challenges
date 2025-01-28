@@ -123,8 +123,8 @@ export default function Page({ params }: { params: { id: string } }) {
           <code
             dangerouslySetInnerHTML={{
               __html: question.options
-                ? question.options[optionIndex].content
-                : question.content,
+                ? question.options[optionIndex].content || ""
+                : question.content || "",
             }}
           ></code>
         </div>
