@@ -18,3 +18,27 @@ body {
   background-color: #faf9f8;
   min-height: 100vh;
 }
+
+code {
+  word-break: break-all;
+  background-color: black;
+  display: block;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.pdflink {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 3rem;
+  margin: 1rem;
+  color: black;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+iframe {
+  display: block;
+  margin: 3rem auto;
+  border-radius: 2rem;
+}

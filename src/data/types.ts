@@ -3,6 +3,8 @@ export interface Question {
   title: string;
   style?: string;
   password?: string;
+  videoLink?: string;
+  pdfPath?: string;
   options?: {
     id: string;
     content: string;

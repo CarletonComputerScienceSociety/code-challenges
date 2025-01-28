@@ -101,29 +101,34 @@ export default function Page({ params }: { params: { id: string } }) {
   return (
     <Layout styleOverride={question.style}>
       <Question>
-        <div className="Question__banner">
-          {message && (
-            <div
-              className={`Question__message ${
-                error
-                  ? "Question__message--error"
-                  : "Question__message--success"
-              }`}
-            >
-              {<p>{message}</p>}
-            </div>
-          )}
-        </div>
         <div className="Question__title">
           <h1>{question.title}</h1>
-          <div
+          {question.pdfPath && (
+            <div className="pdflink">
+              <a href={`/${question.pdfPath}`} download>
+                Download Problem Specifications (PDF)
+              </a>
+            </div>
+          )}
+          <iframe
+            width="960"
+            height="540"
+            src={question.videoLink}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+          <h3> Your Input: </h3>
+
+          <code
             dangerouslySetInnerHTML={{
               __html: question.options
                 ? question.options[optionIndex].content
                 : question.content,
             }}
-          ></div>
+          ></code>
         </div>
+
         <div style={{ marginTop: "2rem" }}></div>
         <form onSubmit={submitData} className="Question__form">
           <input
@@ -147,6 +152,20 @@ export default function Page({ params }: { params: { id: string } }) {
             value="Submit"
           />
         </form>
+
+        <div className="Question__banner">
+          {message && (
+            <div
+              className={`Question__message ${
+                error
+                  ? "Question__message--error"
+                  : "Question__message--success"
+              }`}
+            >
+              {<p>{message}</p>}
+            </div>
+          )}
+        </div>
       </Question>
     </Layout>
   );

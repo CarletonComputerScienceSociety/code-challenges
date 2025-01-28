@@ -7,7 +7,20 @@
   min-height: calc(100vh - 4.45rem * 2);
 }
 
-.SquadGame {
-  background-color: rgb(220, 220, 220);
-  color: black;
+.SquidGame {
+  background-color: rgb(66, 0, 32);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.House {
+  background-color: rgb(0, 44, 66);
+  color: white;
+  font-family: "Century Gothic", Arial, Helvetica, sans-serif;
+}
+
+.SpongeBob {
+  background-color: rgb(6, 46, 14);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
