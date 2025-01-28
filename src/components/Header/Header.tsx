@@ -14,7 +14,7 @@ export default function Header() {
           />
         </Link>
         <h3 className="Header__text">
-          <i>Daily Code Challenge</i>
+          <i>Problem-Solving for Tech Interviews</i>
         </h3>
       </div>
     </div>
