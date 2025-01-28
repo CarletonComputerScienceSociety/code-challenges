@@ -7,7 +7,7 @@ export default async function Home() {
   const today = new Date();
   const availableQuestions = questions.filter(
     (question: Question) =>
-      question.startDate <= today && question.endDate >= today
+      question.startDate <= today && question.endDate >= today,
   );
   return (
     <Page>

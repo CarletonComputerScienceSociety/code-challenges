@@ -16,7 +16,7 @@ const notFound = () => {
 
 const passwordInput = (
   password: string,
-  setPassword: (password: string) => void
+  setPassword: (password: string) => void,
 ) => {
   return (
     <Layout>
@@ -43,7 +43,7 @@ export default function Page({ params }: { params: { id: string } }) {
   if (question.startDate > today || question.endDate < today) return notFound();
 
   const [optionIndex, setOptionIndex] = useState(
-    question.options ? Math.floor(Math.random() * question.options.length) : 0
+    question.options ? Math.floor(Math.random() * question.options.length) : 0,
   );
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
@@ -87,7 +87,7 @@ export default function Page({ params }: { params: { id: string } }) {
       setError(true);
       setMessage(
         // @ts-ignore
-        "🚨 " + (error.toString() || MESSAGE_500 || "")
+        "🚨 " + (error.toString() || MESSAGE_500 || ""),
       );
     }
   };
