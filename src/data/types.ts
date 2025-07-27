@@ -5,6 +5,7 @@ export interface Question {
   password?: string;
   videoLink?: string;
   pdfPath?: string;
+  answer: string;
   options?: {
     id: string;
     content: string;
