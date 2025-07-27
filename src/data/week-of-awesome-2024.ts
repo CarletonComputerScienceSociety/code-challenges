@@ -136,6 +136,7 @@ const question1: Question = {
   id: "week-of-awesome-2024-1",
   title: "Array De-duplication",
   content: question1Body,
+  answer: question1Answer.join(","),
   evaluate: (input: string): boolean => {
     return checkArrayEquivalency(input, question1Answer);
   },
@@ -146,6 +147,7 @@ const question1: Question = {
 const question2: Question = {
   id: "week-of-awesome-2024-2",
   title: "Smallest Number",
+  answer: question2Answer,
   content: question2Body,
   evaluate: (input: string): boolean => {
     return input === question2Answer;
@@ -157,6 +159,7 @@ const question2: Question = {
 const question3: Question = {
   id: "week-of-awesome-2024-3",
   title: "Valid Parentheses?",
+  answer: question3Answer.join(","),
   content: question3Body,
   evaluate: (input: string): boolean => {
     return checkArrayEquivalency(input, question3Answer);
@@ -168,6 +171,7 @@ const question3: Question = {
 const question4: Question = {
   id: "week-of-awesome-2024-4",
   title: "Pair Programming",
+  answer: question4Answer,
   content: question4Body,
   evaluate: (input: string): boolean => {
     return input === question4Answer;
@@ -179,6 +183,7 @@ const question4: Question = {
 const question5: Question = {
   id: "week-of-awesome-2024-5",
   title: "Finding His Way Home",
+  answer: question5Answer,
   content: question5Body,
   evaluate: (input: string): boolean => {
     return input === question5Answer;
@@ -190,6 +195,7 @@ const question5: Question = {
 const question6: Question = {
   id: "week-of-awesome-2024-6",
   title: "Finding Her Way to Food",
+  answer: question6Answer,
   content: question6Body,
   evaluate: (input: string): boolean => {
     return input === question6Answer;
@@ -201,6 +207,7 @@ const question6: Question = {
 const question7: Question = {
   id: "week-of-awesome-2024-7",
   title: "Permutations...",
+  answer: question7Answer,
   content: question7Body,
   evaluate: (input: string): boolean => {
     return input === question7Answer;
