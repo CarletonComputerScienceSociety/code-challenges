@@ -1,6 +1,7 @@
 export interface Question {
   id: string;
   title: string;
+  difficulty?: "Easy" | "Medium" | "Hard";
   style?: string;
   password?: string;
   videoLink?: string;

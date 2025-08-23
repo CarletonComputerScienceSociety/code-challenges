@@ -19,9 +19,15 @@
       {
         "name": "next"
       }
-    ],
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/data/week-of-awesome-2024.test.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/data/week-of-awesome-2024.test.ts"
+  ],
   "exclude": ["node_modules"],
   "ts-node": {
     "compilerOptions": {
