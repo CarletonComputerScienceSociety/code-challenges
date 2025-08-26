@@ -13,21 +13,6 @@ export default function Card({ link, question, number }: CardProps) {
   const today = new Date();
   const isAvailable = question.startDate <= today && question.endDate >= today;
 
-  const num = (idx: any): string => {
-    switch (idx) {
-      case 1:
-        return "1A";
-        break;
-      case 2:
-        return "1B";
-      case 3:
-        return "1C";
-      default:
-        return (idx - 2).toString();
-        break;
-    }
-  };
-
   return (
     <div className="Card__outer">
       <Link
@@ -38,10 +23,7 @@ export default function Card({ link, question, number }: CardProps) {
         <div
           className={`Card ${isAvailable ? "Card--available" : "Card--disabled"}`}
         >
-          <div>
-            {num(number)}
-            {isAvailable}
-          </div>
+          <div>Day {number}</div>
         </div>
       </Link>
     </div>

@@ -98,11 +98,79 @@ export default function Page({ params }: { params: { id: string } }) {
     setEmail("");
   };
 
+  // Difficulty indicator component
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case "Easy":
+        return "#28a745";
+      case "Medium":
+        return "#ffc107";
+      case "Hard":
+        return "#dc3545";
+      default:
+        return "#6c757d";
+    }
+  };
+
+  const getDifficultyDots = (difficulty: string) => {
+    switch (difficulty) {
+      case "Easy":
+        return 1;
+      case "Medium":
+        return 2;
+      case "Hard":
+        return 3;
+      default:
+        return 1;
+    }
+  };
+
   return (
     <Layout styleOverride={question.style}>
       <Question>
         <div className="Question__title">
           <h1>{question.title}</h1>
+
+          {/* Difficulty Indicator */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              marginBottom: "1rem",
+              padding: "0.5rem 1rem",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "8px",
+              border: `2px solid ${getDifficultyColor(question.difficulty)}`,
+            }}
+          >
+            <span
+              style={{
+                fontWeight: "bold",
+                color: getDifficultyColor(question.difficulty),
+                fontSize: "1rem",
+              }}
+            >
+              Difficulty: {question.difficulty}
+            </span>
+            <div style={{ display: "flex", gap: "0.2rem" }}>
+              {[1, 2, 3].map((dot) => (
+                <div
+                  key={dot}
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    backgroundColor:
+                      dot <= getDifficultyDots(question.difficulty)
+                        ? getDifficultyColor(question.difficulty)
+                        : "#e9ecef",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
           {question.pdfPath && (
             <div className="pdflink">
               <a href={`/${question.pdfPath}`} download>
@@ -110,41 +178,95 @@ export default function Page({ params }: { params: { id: string } }) {
               </a>
             </div>
           )}
-          <iframe
+
+          {/* <iframe
             width="960"
             height="540"
             src={question.videoLink}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-          ></iframe>
-          <h3> Your Input: </h3>
+          ></iframe> */}
 
-          <code
-            dangerouslySetInnerHTML={{
-              __html: question.options
-                ? question.options[optionIndex].content || ""
-                : question.content || "",
-            }}
-          ></code>
+          {/* Question content should appear here, right after the title */}
+          <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+            <h2 style={{ marginBottom: "1rem", color: "#333" }}>Question</h2>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: question.options
+                  ? question.options[optionIndex].content || ""
+                  : question.content || "",
+              }}
+              style={{
+                lineHeight: "1.6",
+                fontSize: "1.1rem",
+                backgroundColor: "transparent",
+                color: "black",
+                padding: "1rem",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+              }}
+              className="question-content"
+            />
+          </div>
+          <style jsx>{`
+            .question-content :global(code) {
+              color: white !important;
+              background-color: #333 !important;
+              padding: 0.2rem 0.4rem !important;
+              border-radius: 4px !important;
+              font-family: "Courier New", monospace !important;
+            }
+          `}</style>
+
+          <h3 style={{ marginBottom: "1rem" }}> Enter Your Input Below: </h3>
         </div>
 
-        <div style={{ marginTop: "2rem" }}></div>
         <form onSubmit={submitData} className="Question__form">
-          <input
-            className="Question__form__email"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="@cmail.carleton.ca"
-            type="text"
-            value={email}
-          />
-          <textarea
-            className="Question__form__answer"
-            autoFocus
-            onChange={(e) => setAnswer(e.target.value)}
-            placeholder="Please enter your answer here."
-            value={answer}
-          />
+          <div style={{ marginBottom: "1rem" }}>
+            <label
+              htmlFor="email"
+              style={{
+                display: "block",
+                marginBottom: "0.5rem",
+                fontWeight: "bold",
+                color: "#333",
+              }}
+            >
+              Enter Your Carleton Email:
+            </label>
+            <input
+              id="email"
+              className="Question__form__email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="yourname@cmail.carleton.ca"
+              type="email"
+              value={email}
+            />
+          </div>
+
+          <div style={{ marginBottom: "1rem" }}>
+            <label
+              htmlFor="answer"
+              style={{
+                display: "block",
+                marginBottom: "0.5rem",
+                fontWeight: "bold",
+                color: "#333",
+              }}
+            >
+              Enter Your Answer:
+            </label>
+            <textarea
+              id="answer"
+              className="Question__form__answer"
+              autoFocus
+              onChange={(e) => setAnswer(e.target.value)}
+              placeholder="Please enter your answer here."
+              value={answer}
+            />
+          </div>
+
           <input
             className="Question__form__button"
             disabled={!answer || !email}
