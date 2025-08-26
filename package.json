@@ -1,5 +1,6 @@
 {
-  "name": "rest-nextjs-api-routes",
+  "name": "ccss-code-challenges",
+  "description": "CCSS next.js application for deploying code challenges with REST API routes.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -28,7 +29,10 @@
     "@types/react": "18.3.4",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "8.57.1",
+    "eslint-config-next": "15.4.7",
     "jsdom": "^25.0.0",
+    "node-mocks-http": "^1.17.2",
     "prettier": "^3.3.3",
     "prisma": "5.18.0",
     "ts-node": "10.9.2",
